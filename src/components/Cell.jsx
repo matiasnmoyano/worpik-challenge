@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 const Cell = ({
-  color = "red",
+  color = "",
   setPosx,
   setPosy,
   setColorSelectorVisible,
@@ -10,7 +10,7 @@ const Cell = ({
   const [active, setActive] = useState(false);
   const btnRef = useRef(null);
   const handleClick = () => {
-    setActive(!active);
+    setActive(true);
   };
   const handleMouseEnter = () => {
     if (isDrawing) {
@@ -30,12 +30,14 @@ const Cell = ({
       setColorSelectorVisible(true);
     }
   };
+
   useEffect(() => {
     btnRef.current.addEventListener("contextmenu", (e) => handleMouseUp(e));
     return btnRef.current.removeEventListener("contextmenu", (e) =>
       handleMouseUp(e)
     );
   }, []);
+
   return (
     <button
       ref={btnRef}

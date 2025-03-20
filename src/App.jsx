@@ -10,6 +10,7 @@ function App() {
   const [colorSelectorVisible, setColorSelectorVisible] = useState(false);
   const [gridSize, setGridSize] = useState({ cols: 100, rows: 1 });
   const [isDrawing, setIsDrawing] = useState(false);
+
   useEffect(() => {
     const updateGridSize = () => {
       const cellSize = window.innerWidth / 100;
@@ -22,6 +23,7 @@ function App() {
     window.addEventListener("resize", updateGridSize);
     return () => window.removeEventListener("resize", updateGridSize);
   }, []);
+
   useEffect(() => {
     const handleMouseUp = () => setIsDrawing(false);
     window.addEventListener("mouseup", handleMouseUp);
